@@ -21,7 +21,7 @@ class ObjectRenderer:
         # flor
         pg.draw.rect(self.screen, FLOOR_COLOR, (0, HALF_HEIGHT, WIDTH, HEIGHT))
     def render_game_object(self):
-        list_objects = self.game.raycasting.objects_to_render
+        list_objects = sorted(self.game.raycasting.objects_to_render, key=lambda t: t[0], reverse=True)
         for depth, image, pos in list_objects:
             self.screen.blit(image, pos)
 
@@ -38,4 +38,5 @@ class ObjectRenderer:
             4: self.get_texture('resources/textures/4.png'),
             5: self.get_texture('resources/textures/5.png'),
             6: self.get_texture('resources/textures/6.png'),
+            7: self.get_texture('resources/textures/7.png'),
         }
